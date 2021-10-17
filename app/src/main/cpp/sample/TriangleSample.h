@@ -27,12 +27,15 @@ public:
 
 	virtual void Destroy();
 
+	double getTime();
+
 protected:
 	GLuint m_VertexShader;
 	GLuint m_FragmentShader;
 	GLuint m_ProgramObj;
 	GLuint m_MVPMatLoc;
 	glm::mat4 m_MVPMatrix;
+	double startTime;
 	float m_X;
 	float m_Y;
 	int m_SurfaceWidth;

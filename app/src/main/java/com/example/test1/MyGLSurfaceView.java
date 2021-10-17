@@ -32,13 +32,14 @@ public class MyGLSurfaceView extends GLSurfaceView  {
         mGLRender = new MyGLRender();
         setEGLConfigChooser(8, 8, 8, 8, 16, 8);
         setRenderer(mGLRender);
-        setRenderMode(RENDERMODE_WHEN_DIRTY);
+        setRenderMode(RENDERMODE_CONTINUOUSLY);
     }
 
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        mGLRender.setXY(2f*(event.getX()-getWidth()/2)/getWidth(),-2f*(event.getY()-getHeight()/2)/getHeight());
+        int min = Math.min(getWidth(),getHeight());
+        mGLRender.setXY(2f*(event.getX()-getWidth()/2f)/min,-2f*(event.getY()-getHeight()/2f)/min);
         requestRender();
         return true;
     }

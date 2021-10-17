@@ -7,28 +7,38 @@
 #include "TriangleSample.h"
 #include "../util/GLUtils.h"
 #include "../util/LogUtil.h"
+#include <time.h>
 
 
 TriangleSample::TriangleSample()
 {
-
+	startTime = getTime();
 }
 
 TriangleSample::~TriangleSample()
 {
 }
+double TriangleSample::getTime(){
+	struct timespec res{};
+	clock_gettime(CLOCK_REALTIME, &res);
+	return (1000.0 * res.tv_sec + (double) res.tv_nsec / 1e6)/5;
+}
 
 void TriangleSample::UpdateMatrix(glm::mat4 &mvpMatrix, float x, float y, float ratio) {
-	glm::mat4 Projection = glm::perspective(45.0f,ratio,0.1f,100.0f);//phép chiếu góc nhìn 45 độ tỉ lệ khung nhìn ratio
+	//glm::mat4 Projection = glm::perspective(45.0f,ratio,0.1f,100.0f);//phép chiếu góc nhìn 45 độ tỉ lệ khung nhìn ratio
+	glm::mat4 Projection = glm::ortho(-1.0f,1.0f,-1/ratio,1/ratio,0.1f,100.0f);//phép chiếu góc nhìn 45 độ tỉ lệ khung nhìn ratio
+
 	glm::mat4 View = glm::lookAt(
 			glm::vec3(0,0,4), //vị trí camera
 			glm::vec3(0,0,0),//vị trí nhìn
 			glm::vec3(0,1,0)
 			);
-	float rotate = MATH_PI/180.0f*30.0f;
-	glm::mat4 Model = glm::mat4 (1.0f);
+	int a = (int)(getTime() - startTime)%360;
+	float rotate = MATH_PI/180.0f*a;
+	glm::mat4 Model = glm::mat4 (2.0f);
 	LOGCATE("zzvv %f  %f",x,y);
 	Model = glm::translate(Model,glm::vec3(x,y,0.0f));
+	Model = glm::rotate(Model,rotate,glm::vec3(0,1,0));
 	mvpMatrix = Projection*View*Model;
 }
 
