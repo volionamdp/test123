@@ -28,6 +28,8 @@ public:
 
 	void UpdateTransformMatrix(float rotateX, float rotateY, float scaleX, float scaleY);
 
+	void TouchPoint(float x,float y);
+
 	void OnSurfaceCreated();
 
 	void OnSurfaceChanged(int width, int height);

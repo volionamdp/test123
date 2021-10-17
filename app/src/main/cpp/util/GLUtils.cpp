@@ -36,6 +36,13 @@ GLuint GLUtils::LoadShader(GLenum shaderType, const char *pSource)
 	FUN_END_TIME("GLUtils::LoadShader")
 	return shader;
 }
+//
+//GLuint GLUtils::LoadShader(GLenum shaderType, const char *pSource) {
+//    GLuint shader = glCreateShader(shaderType);
+//    glShaderSource(shader,1,&pSource,NULL);
+//    glCompileShader(shader);
+//    return shader;
+//}
 
 GLuint GLUtils::CreateProgram(const char *pVertexShaderSource, const char *pFragShaderSource, GLuint &vertexShaderHandle, GLuint &fragShaderHandle)
 {

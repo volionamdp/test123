@@ -47,5 +47,7 @@ public class MyGLRender implements GLSurfaceView.Renderer {
     }
 
 
-
+    public void setXY(float v, float v1) {
+        mNativeRender.native_TouchPoint(v,v1);
+    }
 }

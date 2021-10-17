@@ -27,10 +27,15 @@ MyGLRenderContext::~MyGLRenderContext() {
 
 }
 
+void MyGLRenderContext::TouchPoint(float x, float y) {
+    m_pCurSample->setXY(x,y);
+}
 
 void MyGLRenderContext::OnSurfaceCreated() {
     LOGCATE("MyGLRenderContext::OnSurfaceCreated");
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    m_pCurSample->Init();
+
 }
 
 void MyGLRenderContext::OnSurfaceChanged(int width, int height) {
@@ -43,7 +48,7 @@ void MyGLRenderContext::OnSurfaceChanged(int width, int height) {
 void MyGLRenderContext::OnDrawFrame() {
     LOGCATE("MyGLRenderContext::OnDrawFrame");
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-    //glClearColor(0,1,0,1);
+//    glClearColor(0,1,0,1);
 
     m_pCurSample->Draw();
 }

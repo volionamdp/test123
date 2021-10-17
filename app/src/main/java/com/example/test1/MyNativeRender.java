@@ -19,6 +19,8 @@ public class MyNativeRender {
 
     public native void native_SetImageData(int format, int width, int height, byte[] bytes);
 
+    public native void native_TouchPoint(float x,float y);
+
     public native void native_OnSurfaceCreated();
 
     public native void native_OnSurfaceChanged(int width, int height);

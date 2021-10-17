@@ -4,6 +4,7 @@ import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 
 public class MyGLSurfaceView extends GLSurfaceView  {
@@ -34,6 +35,13 @@ public class MyGLSurfaceView extends GLSurfaceView  {
         setRenderMode(RENDERMODE_WHEN_DIRTY);
     }
 
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        mGLRender.setXY(2f*(event.getX()-getWidth()/2)/getWidth(),-2f*(event.getY()-getHeight()/2)/getHeight());
+        requestRender();
+        return true;
+    }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {

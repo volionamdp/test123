@@ -40,3 +40,9 @@ Java_com_example_test1_MyNativeRender_native_1OnDrawFrame(JNIEnv *env, jobject t
     MyGLRenderContext::GetInstance()->OnDrawFrame();
 
 }
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_test1_MyNativeRender_native_1TouchPoint(JNIEnv *env, jobject thiz, jfloat x, jfloat y) {
+    MyGLRenderContext::GetInstance()->TouchPoint(x,y);
+}
