@@ -6,12 +6,13 @@
 #define NDK_OPENGLES_3_0_TRIANGLESAMPLE_H
 
 #include "stdint.h"
+#include "GLSampleBase.h"
 #include <GLES3/gl3.h>
 #include <ImageDef.h>
 #include <ByteFlowLock.h>
 #include <glm.hpp>
 
-class TriangleSample
+class TriangleSample: public GLSampleBase
 {
 public:
 	TriangleSample();
@@ -23,7 +24,7 @@ public:
 
 	virtual void UpdateMatrix(glm::mat4 &mvpMatrix,float x,float y,float ratio);
 
-	virtual void Draw();
+	virtual void Draw(int screenW, int screenH);
 
 	virtual void Destroy();
 

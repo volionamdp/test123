@@ -3,13 +3,14 @@
 //
 
 #include <TriangleSample.h>
+#include <ParticlesSample.h>
 #include "MyGLRenderContext.h"
 #include "LogUtil.h"
 
 MyGLRenderContext *MyGLRenderContext::m_pContext = nullptr;
 
 MyGLRenderContext::MyGLRenderContext() {
-    m_pCurSample = new TriangleSample();
+    m_pCurSample = new ParticlesSample();
     m_pBeforeSample = nullptr;
 
 }
@@ -28,7 +29,7 @@ MyGLRenderContext::~MyGLRenderContext() {
 }
 
 void MyGLRenderContext::TouchPoint(float x, float y) {
-    m_pCurSample->setXY(x,y);
+  //  m_pCurSample->setXY(x,y);
 }
 
 void MyGLRenderContext::OnSurfaceCreated() {
@@ -50,7 +51,7 @@ void MyGLRenderContext::OnDrawFrame() {
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 //    glClearColor(0,1,0,1);
 
-    m_pCurSample->Draw();
+    m_pCurSample->Draw(m_ScreenW,m_ScreenH);
 }
 
 MyGLRenderContext *MyGLRenderContext::GetInstance() {

@@ -75,7 +75,7 @@ void TriangleSample::Init()
 	}
 }
 
-void TriangleSample::Draw()
+void TriangleSample::Draw(int screenW, int screenH) 
 {
 	LOGCATE("TriangleSample::Draw");
 	GLfloat vVertices[] = {

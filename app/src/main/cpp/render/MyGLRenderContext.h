@@ -7,6 +7,7 @@
 
 #include "stdint.h"
 #include <GLES3/gl3.h>
+#include <GLSampleBase.h>
 #include "TriangleSample.h"
 
 class MyGLRenderContext
@@ -41,8 +42,8 @@ public:
 
 private:
 	static MyGLRenderContext *m_pContext;
-	TriangleSample *m_pBeforeSample;
-	TriangleSample *m_pCurSample;
+	GLSampleBase *m_pBeforeSample;
+	GLSampleBase *m_pCurSample;
 	int m_ScreenW;
 	int m_ScreenH;
 
