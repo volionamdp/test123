@@ -4,13 +4,15 @@
 
 #include <TriangleSample.h>
 #include <ParticlesSample.h>
+#include <LoadImageSample.h>
+#include <TextureMapSample.h>
 #include "MyGLRenderContext.h"
 #include "LogUtil.h"
 
 MyGLRenderContext *MyGLRenderContext::m_pContext = nullptr;
 
 MyGLRenderContext::MyGLRenderContext() {
-    m_pCurSample = new ParticlesSample();
+    m_pCurSample = new LoadImageSample();
     m_pBeforeSample = nullptr;
 
 }
@@ -28,12 +30,21 @@ MyGLRenderContext::~MyGLRenderContext() {
 
 }
 
+void MyGLRenderContext::SetImageData(int format, int width, int height, uint8_t *pData) {
+    NativeImage nativeImage;
+    nativeImage.format = format;
+    nativeImage.width = width;
+    nativeImage.height = height;
+    nativeImage.ppPlane[0] = pData;
+    m_pCurSample->LoadImage(&nativeImage);
+}
+
 void MyGLRenderContext::TouchPoint(float x, float y) {
   //  m_pCurSample->setXY(x,y);
 }
 
 void MyGLRenderContext::OnSurfaceCreated() {
-    LOGCATE("MyGLRenderContext::OnSurfaceCreated");
+    //LOGCATE("MyGLRenderContext::OnSurfaceCreated");
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     m_pCurSample->Init();
 

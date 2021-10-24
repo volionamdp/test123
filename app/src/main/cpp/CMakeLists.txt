@@ -24,6 +24,9 @@ file(GLOB src-files
         ${CMAKE_SOURCE_DIR}/util/*.cpp
         ${CMAKE_SOURCE_DIR}/sample/*.cpp
         ${CMAKE_SOURCE_DIR}/sample/ParticlesSample.cpp
+        ${CMAKE_SOURCE_DIR}/sample/LoadImageSample.cpp
+        ${CMAKE_SOURCE_DIR}/sample/TextureMapSample.cpp
+
         ${CMAKE_SOURCE_DIR}/egl/*.cpp
         ${CMAKE_SOURCE_DIR}/looper/*.cpp)
 

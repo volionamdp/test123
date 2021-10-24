@@ -9,7 +9,7 @@
 #include <detail/type_mat4x4.hpp>
 #include "GLSampleBase.h"
 
-#define MAX_PARTICLES 1
+#define MAX_PARTICLES 200
 
 struct Particle {
 	GLfloat dx,dy,dz;//offset

@@ -29,10 +29,11 @@ public class MyGLSurfaceView extends GLSurfaceView  {
     private void init() {
         Log.d(TAG, "init: ");
         this.setEGLContextClientVersion(3);
-        mGLRender = new MyGLRender();
+        mGLRender = new MyGLRender(getContext());
         setEGLConfigChooser(8, 8, 8, 8, 16, 8);
         setRenderer(mGLRender);
         setRenderMode(RENDERMODE_CONTINUOUSLY);
+
     }
 
 

@@ -103,7 +103,7 @@ void ParticlesSample::Init()
 			"uniform sampler2D s_TextureMap;\n"
 			"void main()\n"
 			"{\n"
-			"    outColor = v_color;\n"
+			"    outColor = texture(s_TextureMap,v_texCoord);\n"
 			"}";
 
 	m_ProgramObj = GLUtils::CreateProgram(vShaderStr, fShaderStr, m_VertexShader, m_FragmentShader);

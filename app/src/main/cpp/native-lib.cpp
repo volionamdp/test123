@@ -15,6 +15,12 @@ JNIEXPORT void JNICALL
 Java_com_example_test1_MyNativeRender_native_1SetImageData(JNIEnv *env, jobject thiz, jint format,
                                                            jint width, jint height,
                                                            jbyteArray bytes) {
+    int len = env->GetArrayLength(bytes);
+    uint8_t* data = new uint8_t [len];
+    env->GetByteArrayRegion(bytes,0,len,reinterpret_cast<jbyte*>(data));
+    MyGLRenderContext::GetInstance()->SetImageData(format,width,height,data);
+    delete[] data;
+    env->DeleteLocalRef(bytes);
 //    int len = env->GetArrayLength(bytes);
 //    uint8_t *buf = new uint8_t [len];
 //    env->GetByteArrayRegion(bytes,0,len,reinterpret_cast<jbyte *>(buf));
